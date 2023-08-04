@@ -1,3 +1,4 @@
+import 'package:app/screens/components/my_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -132,10 +133,8 @@ class _LoginPageState extends State<LoginPage> {
                                   const SizedBox(
                                     height: 20,
                                   ),
-                                  ElevatedButton(
-                                    child: const Text('Submit'),
-                                    onPressed: () {},
-                                  ),
+                                  MyButton(
+                                      onPressed: () {}, buttonText: 'Submit'),
                                   const SizedBox(
                                     height: 12,
                                   ),
@@ -171,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                     Transform.translate(
                       offset: const Offset(0, -253),
                       child: Image.asset(
-                        'assets/images/plants',
+                        'assets/images/plants.png',
                         scale: 1.5,
                         width: double.infinity,
                       ),
