@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
+        // resizeToAvoidBottomInset: true,
         backgroundColor: HexColor("#fed8c3"),
         body: ListView(
           padding: const EdgeInsets.fromLTRB(0, 400, 0, 0),
