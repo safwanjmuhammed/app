@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:app/components/customcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -14,8 +17,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColor.primaryColor,
-      body: SafeArea(
-          child: Column(
+      body: Column(
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 50, right: 220),
@@ -23,12 +25,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               radius: 30,
               backgroundColor: Colors.white,
               child: Image.asset(
-                'assets/images/welcomescreen/toy1.png',
+                'assets/images/welcomescreen/caplogo.png',
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 20, left: 50),
+            padding: const EdgeInsets.only(top: 20, left: 50, bottom: 20),
             child: Text(
               'Food for Everyone',
               style: GoogleFonts.poppins(
@@ -37,9 +39,32 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 color: Colors.white,
               ),
             ),
+          ),
+          Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 175, top: 50),
+                child: Image.asset('assets/images/welcomescreen/toy1.png'),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 150),
+                child: Image.asset('assets/images/welcomescreen/toy2.png'),
+              ),
+              Padding(
+                  padding: const EdgeInsets.only(top: 300),
+                  child: Container(
+                    height: 200,
+                    decoration: BoxDecoration(
+                      gradient: SweepGradient(colors: [
+                        CustomColor.primaryColor.withOpacity(.5),
+                        CustomColor.primaryColor.withOpacity(.6),
+                      ], startAngle: 1.2, endAngle: .2),
+                    ),
+                  ))
+            ],
           )
         ],
-      )),
+      ),
     );
   }
 }
