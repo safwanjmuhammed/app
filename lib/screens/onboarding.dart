@@ -3,7 +3,6 @@ import 'dart:ui';
 import 'package:app/components/customcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hexcolor/hexcolor.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -40,29 +39,36 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ),
             ),
           ),
-          Stack(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 175, top: 50),
-                child: Image.asset('assets/images/welcomescreen/toy1.png'),
+          Stack(children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 175, top: 50),
+              child: Image.asset('assets/images/welcomescreen/toy1.png'),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 150),
+              child: Image.asset('assets/images/welcomescreen/toy2.png'),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 300),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.5),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 25, right: 25),
+                child: Container(
+                    width: double.infinity,
+                    height: 70,
+                    child: ElevatedButton(
+                        onPressed: () {},
+                        child: Text('Get Started',
+                            style: GoogleFonts.poppins(
+                                color: CustomColor.primaryColor,
+                                fontSize: 17,
+                                fontWeight: FontWeight.w400)))),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 150),
-                child: Image.asset('assets/images/welcomescreen/toy2.png'),
-              ),
-              Padding(
-                  padding: const EdgeInsets.only(top: 300),
-                  child: Container(
-                    height: 200,
-                    decoration: BoxDecoration(
-                      gradient: SweepGradient(colors: [
-                        CustomColor.primaryColor.withOpacity(.5),
-                        CustomColor.primaryColor.withOpacity(.6),
-                      ], startAngle: 1.2, endAngle: .2),
-                    ),
-                  ))
-            ],
-          )
+            ),
+          ]),
         ],
       ),
     );
