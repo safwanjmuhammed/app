@@ -33,10 +33,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             child: Text(
               'Food for Everyone',
               style: GoogleFonts.poppins(
-                fontWeight: FontWeight.bold,
-                fontSize: 50,
-                color: Colors.white,
-              ),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 50,
+                  color: Colors.white,
+                  height: 1),
             ),
           ),
           Stack(children: [
@@ -48,20 +48,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               padding: const EdgeInsets.only(right: 150),
               child: Image.asset('assets/images/welcomescreen/toy2.png'),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 300),
+            const Padding(
+              padding: EdgeInsets.only(top: 300),
             ),
             Padding(
               padding: EdgeInsets.only(
                   top: MediaQuery.of(context).size.height * 0.5),
               child: Padding(
                 padding: const EdgeInsets.only(left: 25, right: 25),
-                child: Container(
+                child: SizedBox(
                     width: double.infinity,
-                    height: 70,
+                    height: 50,
                     child: ElevatedButton(
                         onPressed: () {},
-                        child: Text('Get Started',
+                        child: Text('Get started',
                             style: GoogleFonts.poppins(
                                 color: CustomColor.primaryColor,
                                 fontSize: 17,
