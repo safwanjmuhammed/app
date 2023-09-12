@@ -1,4 +1,4 @@
-import 'package:app/screens/pad.dart';
+import 'package:app/screens/onboarding.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,8 +14,8 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          useMaterial3: true,
+          
         ),
-        home: const ApiDemo());
+        home: const WelcomeScreen());
   }
 }
