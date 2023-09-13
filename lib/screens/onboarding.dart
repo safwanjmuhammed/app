@@ -14,60 +14,71 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final mWidth = MediaQuery.of(context).size.width;
+    final mHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: CustomColor.primaryColor,
       body: SafeArea(
         child: Column(
           children: [
-            Align(
-              heightFactor: 3,
-              child: CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.white,
-                child: Image.asset(
-                  'assets/images/welcomescreen/caplogo.png',
-                ),
-              ),
-            ),
             Padding(
-              padding: EdgeInsets.only(top: 20, left: 50, bottom: 20),
-              child: Text(
-                'Food for Everyone',
-                style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 50,
-                    color: Colors.white,
-                    height: 1),
+              padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width / 9,
+                  top: MediaQuery.of(context).size.height / 15),
+              child: Column(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Colors.white,
+                    child: Image.asset(
+                      'assets/images/welcomescreen/caplogo.png',
+                    ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 17,
+                  ),
+                  Text(
+                    'Food for Everyone',
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 50,
+                        color: Colors.white,
+                        height: 1),
+                  ),
+                ],
               ),
             ),
             Stack(children: [
               Padding(
-                padding: const EdgeInsets.only(left: 175, top: 50),
-                child: Image.asset('assets/images/welcomescreen/toy1.png'),
+                padding: EdgeInsets.only(left: mWidth * 0.5, top: mHeight / 10),
+                child: Image.asset(
+                  'assets/images/welcomescreen/toy1.png',
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 150),
-                child: Image.asset('assets/images/welcomescreen/toy2.png'),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(top: 300),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.5),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 25, right: 25),
-                  child: SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: ElevatedButton(
-                          onPressed: () {},
-                          child: Text('Get started',
-                              style: GoogleFonts.poppins(
-                                  color: CustomColor.primaryColor,
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w400)))),
+                child: Image.asset(
+                  'assets/images/welcomescreen/toy2.png',
+                  width: mWidth * 1,
+                  height: mHeight * 0.5,
                 ),
+              ),
+              Positioned(
+                bottom: 0.5,
+                left: 20,
+                right: 20,
+                child: Container(
+                    width: mWidth * 0.7,
+                    height: 50,
+                    child: ElevatedButton(
+                        onPressed: () {},
+                        child: Text('Get started',
+                            style: GoogleFonts.poppins(
+                                color: CustomColor.primaryColor,
+                                fontSize: 17,
+                                fontWeight: FontWeight.w400)))),
               ),
             ]),
           ],
