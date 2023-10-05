@@ -1,3 +1,4 @@
+import 'package:app/screens/google_map_demo.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,6 +14,6 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(),
-        home: Counter());
+        home: GoogleMapDemo());
   }
 }
