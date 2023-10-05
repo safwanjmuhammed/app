@@ -9,13 +9,20 @@ class GoogleMapDemo extends StatefulWidget {
 }
 
 class _GoogleMapDemoState extends State<GoogleMapDemo> {
-  static final LatLng _kMapCenter =
-      LatLng(19.018255973653343, 72.84793849278007);
+  static final LatLng _kMapCenter = LatLng(42.361145, -71.057083);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:
-          GoogleMap(initialCameraPosition: CameraPosition(target: _kMapCenter)),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.all(40),
+        child: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.gps_fixed),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      body: GoogleMap(
+          initialCameraPosition: CameraPosition(target: _kMapCenter, zoom: 2)),
     );
   }
 }
