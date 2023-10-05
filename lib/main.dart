@@ -1,4 +1,3 @@
-import 'package:app/screens/onboarding.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,9 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          
-        ),
-        home: const WelcomeScreen());
+        theme: ThemeData(),
+        home: Counter());
   }
 }

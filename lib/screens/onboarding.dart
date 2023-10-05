@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:app/components/custom_color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,10 +49,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ),
             ),
             Stack(children: [
-              Padding(
-                padding: EdgeInsets.only(left: mWidth * 0.5, top: mHeight / 10),
+              Positioned(
+                left: mWidth / 4.4,
+                top: mHeight / 15,
                 child: Image.asset(
                   'assets/images/welcomescreen/toy1.png',
+                  width: mWidth * 1,
+                  height: mHeight * 0.5,
                 ),
               ),
               Padding(
@@ -66,12 +67,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
               ),
               Positioned(
-                bottom: 0.5,
+                top: 350,
                 left: 20,
                 right: 20,
                 child: Container(
                     width: mWidth * 0.7,
-                    height: 50,
                     child: ElevatedButton(
                         onPressed: () {},
                         child: Text('Get started',

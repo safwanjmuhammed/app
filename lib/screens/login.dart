@@ -133,11 +133,11 @@ class _LoginPageState extends State<LoginPage> {
                                   const SizedBox(
                                     height: 20,
                                   ),
-                                  MyButton(
-                                      onPressed: () {}, buttonText: 'Submit'),
-                                  const SizedBox(
-                                    height: 12,
-                                  ),
+                                  // MyButton(
+                                  //     onPressed: () {}, buttonText: 'Submit'),
+                                  // const SizedBox(
+                                  //   height: 12,
+                                  // ),
                                   Padding(
                                     padding:
                                         const EdgeInsets.fromLTRB(35, 0, 0, 0),
