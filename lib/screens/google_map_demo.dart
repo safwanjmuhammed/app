@@ -23,6 +23,7 @@ class _GoogleMapDemoState extends State<GoogleMapDemo> {
         setState(() {
           latitude = location.latitude;
           longitude = location.longitude;
+
           print('LATITUDE$latitude');
           print('LONGITUDE$longitude');
         });
@@ -39,12 +40,14 @@ class _GoogleMapDemoState extends State<GoogleMapDemo> {
         child: const Icon(Icons.gps_fixed),
         onPressed: () {
           getLocation();
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text('LATITUDE   $latitude  LONGITUDE   $longitude')));
         },
       ),
       body: SafeArea(
         child: GoogleMap(
           initialCameraPosition:
-              CameraPosition(target: LatLng(latitude, longitude), zoom: 2),
+              CameraPosition(target: LatLng(latitude, longitude), zoom: 0),
           zoomControlsEnabled: false,
         ),
       ),
