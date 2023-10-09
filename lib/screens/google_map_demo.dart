@@ -17,7 +17,7 @@ class _GoogleMapDemoState extends State<GoogleMapDemo> {
     try {
       final permission = await Geolocator.checkPermission();
       if (permission == LocationPermission.denied) {
-        Geolocator.requestPermission();
+       await Geolocator.requestPermission();
       } else {
         final location = await Geolocator.getCurrentPosition();
         setState(() {
