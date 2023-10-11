@@ -12,8 +12,9 @@ class GoogleMapDemo extends StatefulWidget {
 class _GoogleMapDemoState extends State<GoogleMapDemo> {
   double latitude = 0.0;
   double longitude = 0.0;
+  GoogleMapController? googleMapController;
 
-  liveLocation() async {
+  void liveLocation() async {
     final permission = await Geolocator.checkPermission();
     final locationService = await Geolocator.isLocationServiceEnabled();
     try {
@@ -30,31 +31,13 @@ class _GoogleMapDemoState extends State<GoogleMapDemo> {
             print(latitude);
             print(longitude);
           });
+          googleMapController!.animateCamera(CameraUpdate.newCameraPosition(
+              CameraPosition(target: LatLng(latitude, longitude), zoom: 15)));
         });
       }
     } catch (e) {
       print(e);
     }
-  }
-
-  // Future<Position> getLocation() async {
-  //   try {
-  //     final permission = await Geolocator.checkPermission();
-  //     if (permission == LocationPermission.denied) {
-  //       await Geolocator.requestPermission();
-  //     } else {
-  //       final location = await Geolocator.getCurrentPosition();
-  //       return location;
-  //     }
-  //   } catch (e) {
-  //     print(e.toString());
-  //   }
-  //   throw Exception('EXCEPTION EXICUTED');
-  // }
-
-  @override
-  void initState() {
-    super.initState();
   }
 
   @override
@@ -73,6 +56,11 @@ class _GoogleMapDemoState extends State<GoogleMapDemo> {
         child: GoogleMap(
           initialCameraPosition:
               CameraPosition(target: LatLng(latitude, longitude), zoom: 0),
+          onMapCreated: (controller) {
+            setState(() {
+              googleMapController = controller;
+            });
+          },
           markers: {
             Marker(
                 markerId: const MarkerId('Current User Location'),
