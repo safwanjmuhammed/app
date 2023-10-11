@@ -32,7 +32,7 @@ class _GoogleMapDemoState extends State<GoogleMapDemo> {
             print(longitude);
           });
           googleMapController!.animateCamera(CameraUpdate.newCameraPosition(
-              CameraPosition(target: LatLng(latitude, longitude), zoom: 17)));
+              CameraPosition(target: LatLng(latitude, longitude), zoom: 20)));
         });
       }
     } catch (e) {
@@ -47,25 +47,25 @@ class _GoogleMapDemoState extends State<GoogleMapDemo> {
         child: const Icon(Icons.gps_fixed),
         onPressed: () {
           liveLocation();
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text('LAT  $latitude  LON  $longitude'),
-          ));
         },
       ),
       body: SafeArea(
         child: GoogleMap(
           initialCameraPosition:
-              CameraPosition(target: LatLng(latitude, longitude), zoom: 0),
+              CameraPosition(target: LatLng(latitude, longitude), zoom: 5),
           onMapCreated: (controller) {
             setState(() {
               googleMapController = controller;
             });
           },
-          markers: {
-            Marker(
-                markerId: const MarkerId('Current User Location'),
-                position: LatLng(latitude, longitude))
-          },
+          myLocationEnabled: true,
+          myLocationButtonEnabled: false,
+
+          // markers: {
+          //   Marker(
+          //       markerId: const MarkerId('Current User Location'),
+          //       position: LatLng(latitude, longitude))
+          // },
           zoomControlsEnabled: false,
         ),
       ),
