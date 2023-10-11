@@ -32,7 +32,7 @@ class _GoogleMapDemoState extends State<GoogleMapDemo> {
             print(longitude);
           });
           googleMapController!.animateCamera(CameraUpdate.newCameraPosition(
-              CameraPosition(target: LatLng(latitude, longitude), zoom: 15)));
+              CameraPosition(target: LatLng(latitude, longitude), zoom: 17)));
         });
       }
     } catch (e) {
