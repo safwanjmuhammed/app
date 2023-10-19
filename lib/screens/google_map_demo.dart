@@ -18,7 +18,7 @@ class _GoogleMapDemoState extends State<GoogleMapDemo> {
     final permission = await Geolocator.checkPermission();
     final locationService = await Geolocator.isLocationServiceEnabled();
     try {
-      if (permission == LocationPermission.denied || locationService == false) {
+      if (permission == LocationPermission.denied) {
         await Geolocator.requestPermission();
       } else {
         Geolocator.getPositionStream(
@@ -52,12 +52,13 @@ class _GoogleMapDemoState extends State<GoogleMapDemo> {
       body: SafeArea(
         child: GoogleMap(
           initialCameraPosition:
-              CameraPosition(target: LatLng(latitude, longitude), zoom: 5),
+              CameraPosition(target: LatLng(latitude, longitude), zoom: 0),
           onMapCreated: (controller) {
             setState(() {
               googleMapController = controller;
             });
           },
+          compassEnabled: true,
           myLocationEnabled: true,
           myLocationButtonEnabled: false,
 

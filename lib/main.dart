@@ -1,3 +1,4 @@
+import 'package:app/screens/bottom_sheet.dart';
 import 'package:app/screens/google_map_demo.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,6 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(),
-        home: GoogleMapDemo());
+        home: BottomSheetDemo());
   }
 }
