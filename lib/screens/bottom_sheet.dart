@@ -18,7 +18,7 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
           onPressed: () {
             showModalBottomSheet(
               showDragHandle: true,
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20),
                       topRight: Radius.circular(20))),
@@ -42,36 +42,16 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
-                            onTap: () {
-                              setState(() {
-                                isSelected = true;
-                              });
-                            },
-                            child: Container(
-                              height: 50,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle, color: Colors.red),
-                              child: Center(
-                                child: Text(
-                                  '1',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              setState(() {
-                                isSelected = true;
-                                print('ISSELECTED ? $isSelected');
-                              });
-                            },
-                            child: StatefulBuilder(
-                              builder:
-                                  (BuildContext context, Function setState) {
-                                return Container(
+                          StatefulBuilder(
+                            builder: (BuildContext context, Function setState) {
+                              return InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    isSelected = true;
+                                    print('ISSELECTED ? $isSelected');
+                                  });
+                                },
+                                child: Container(
                                   height: 50,
                                   width: 30,
                                   decoration: BoxDecoration(
@@ -80,13 +60,41 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
                                           ? Colors.red
                                           : Colors.transparent),
                                   child: Center(
-                                    child: Text(
-                                      '2',
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
+                                      child: Text('1',
+                                          style: isSelected
+                                              ? TextStyle(color: Colors.white)
+                                              : TextStyle(
+                                                  color: Colors.black))),
+                                ),
+                              );
+                            },
+                          ),
+                          StatefulBuilder(
+                            builder: (BuildContext context, Function setState) {
+                              return InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    isSelected = true;
+                                    print('ISSELECTED ? $isSelected');
+                                  });
+                                },
+                                child: Container(
+                                  height: 50,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: isSelected
+                                          ? Colors.red
+                                          : Colors.transparent),
+                                  child: Center(
+                                      child: Text('2',
+                                          style: isSelected
+                                              ? TextStyle(color: Colors.white)
+                                              : TextStyle(
+                                                  color: Colors.black))),
+                                ),
+                              );
+                            },
                           ),
                           Text(
                             '3',
