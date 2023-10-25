@@ -8,6 +8,7 @@ class BottomSheetDemo extends StatefulWidget {
 }
 
 class _BottomSheetDemoState extends State<BottomSheetDemo> {
+  bool isSelected = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,11 +18,15 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
           onPressed: () {
             showModalBottomSheet(
               showDragHandle: true,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20))),
               context: context,
               builder: (BuildContext context) {
                 return Column(
                   children: [
-                    Text(
+                    const Text(
                       'How many seats?',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
@@ -37,11 +42,51 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            '1',
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                isSelected = true;
+                              });
+                            },
+                            child: Container(
+                              height: 50,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle, color: Colors.red),
+                              child: Center(
+                                child: Text(
+                                  '1',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
                           ),
-                          Text(
-                            '2',
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                isSelected = true;
+                                print('ISSELECTED ? $isSelected');
+                              });
+                            },
+                            child: StatefulBuilder(
+                              builder:
+                                  (BuildContext context, Function setState) {
+                                return Container(
+                                  height: 50,
+                                  width: 30,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: isSelected
+                                          ? Colors.red
+                                          : Colors.transparent),
+                                  child: Center(
+                                    child: Text(
+                                      '2',
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
                           ),
                           Text(
                             '3',
@@ -69,7 +114,7 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
                           ),
                         ],
                       ),
-                    )
+                    ),
                   ],
                 );
               },
@@ -78,4 +123,12 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
           child: Text('Book Tickets')),
     ));
   }
+}
+
+Widget roundShape() {
+  return Container(
+    height: 50,
+    width: 25,
+    decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.red),
+  );
 }
