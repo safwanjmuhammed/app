@@ -9,6 +9,8 @@ class BottomSheetDemo extends StatefulWidget {
 
 class _BottomSheetDemoState extends State<BottomSheetDemo> {
   bool isSelected = false;
+  int selectedIndex = 0;
+  List<int> tickets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,92 +37,45 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
                       'assets/images/scooter.png',
                       height: 100,
                     ),
-                    SizedBox(height: 20),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(right: 20, left: 20, top: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          StatefulBuilder(
-                            builder: (BuildContext context, Function setState) {
-                              return InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    isSelected = true;
-                                    print('ISSELECTED ? $isSelected');
-                                  });
-                                },
-                                child: Container(
-                                  height: 50,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: isSelected
-                                          ? Colors.red
-                                          : Colors.transparent),
-                                  child: Center(
-                                      child: Text('1',
-                                          style: isSelected
-                                              ? TextStyle(color: Colors.white)
-                                              : TextStyle(
-                                                  color: Colors.black))),
-                                ),
-                              );
-                            },
-                          ),
-                          StatefulBuilder(
-                            builder: (BuildContext context, Function setState) {
-                              return InkWell(
-                                onTap: () {
-                                  setState(() {
-                                    isSelected = true;
-                                    print('ISSELECTED ? $isSelected');
-                                  });
-                                },
-                                child: Container(
-                                  height: 50,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: isSelected
-                                          ? Colors.red
-                                          : Colors.transparent),
-                                  child: Center(
-                                      child: Text('2',
-                                          style: isSelected
-                                              ? TextStyle(color: Colors.white)
-                                              : TextStyle(
-                                                  color: Colors.black))),
-                                ),
-                              );
-                            },
-                          ),
-                          Text(
-                            '3',
-                          ),
-                          Text(
-                            '4',
-                          ),
-                          Text(
-                            '5',
-                          ),
-                          Text(
-                            '6',
-                          ),
-                          Text(
-                            '7',
-                          ),
-                          Text(
-                            '8',
-                          ),
-                          Text(
-                            '9',
-                          ),
-                          Text(
-                            '10',
-                          ),
-                        ],
+                    SizedBox(height: 10),
+                    Expanded(
+                      child: StatefulBuilder(
+                        builder: (BuildContext context,
+                            void Function(void Function()) setState) {
+                          return ListView.builder(
+                              physics: NeverScrollableScrollPhysics(),
+                              scrollDirection: Axis.horizontal,
+                              itemCount: tickets.length,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding:
+                                      const EdgeInsets.only(left: 5, right: 5),
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        selectedIndex = index;
+                                      });
+                                    },
+                                    child: Container(
+                                      height: 50,
+                                      width: 30,
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: selectedIndex == index
+                                              ? Colors.red
+                                              : Colors.transparent),
+                                      child: Center(
+                                          child: Text('${tickets[index]}',
+                                              style: isSelected
+                                                  ? TextStyle(
+                                                      color: Colors.white)
+                                                  : TextStyle(
+                                                      color: Colors.black))),
+                                    ),
+                                  ),
+                                );
+                              });
+                        },
                       ),
                     ),
                   ],
@@ -131,12 +86,4 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
           child: Text('Book Tickets')),
     ));
   }
-}
-
-Widget roundShape() {
-  return Container(
-    height: 50,
-    width: 25,
-    decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.red),
-  );
 }
