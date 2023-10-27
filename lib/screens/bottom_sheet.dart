@@ -8,9 +8,25 @@ class BottomSheetDemo extends StatefulWidget {
 }
 
 class _BottomSheetDemoState extends State<BottomSheetDemo> {
-  bool isSelected = false;
   int selectedIndex = 0;
   List<int> tickets = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  String images = '';
+
+  imageAccordingtoIndex(int index, void Function(void Function()) setState) {
+    index = 0;
+    switch (index==selectedIndex) {
+      case 0:
+        {
+          setState(() {
+            images = 'assets/images/scooter2.png';
+            print(images);
+          });
+        }
+        break;
+      default:
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,14 +44,16 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
               builder: (BuildContext context) {
                 return Column(
                   children: [
-                    const Text(
+                    Text(
                       'How many seats?',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     SizedBox(height: 50),
                     Image.asset(
-                      'assets/images/scooter.png',
-                      height: 100,
+                      images,
+                      height: 150,
                     ),
                     SizedBox(height: 10),
                     Expanded(
@@ -54,6 +72,7 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
                                     onTap: () {
                                       setState(() {
                                         selectedIndex = index;
+                                        imageAccordingtoIndex(index, setState);
                                       });
                                     },
                                     child: Container(
@@ -66,10 +85,10 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
                                               : Colors.transparent),
                                       child: Center(
                                           child: Text('${tickets[index]}',
-                                              style: isSelected
-                                                  ? TextStyle(
+                                              style: selectedIndex == index
+                                                  ? const TextStyle(
                                                       color: Colors.white)
-                                                  : TextStyle(
+                                                  : const TextStyle(
                                                       color: Colors.black))),
                                     ),
                                   ),
@@ -83,7 +102,7 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
               },
             );
           },
-          child: Text('Book Tickets')),
+          child: const Text('Book Tickets')),
     ));
   }
 }
